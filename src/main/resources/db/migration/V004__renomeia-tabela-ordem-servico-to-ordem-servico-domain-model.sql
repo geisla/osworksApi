@@ -1,0 +1,2 @@
+alter table ordem_servico
+rename to ordem_servico_domain_model

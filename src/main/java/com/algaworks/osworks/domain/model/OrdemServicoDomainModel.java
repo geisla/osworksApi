@@ -2,6 +2,7 @@ package com.algaworks.osworks.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -21,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
-public class OrdemServico {
+public class OrdemServicoDomainModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //para dar um autoIncremento
@@ -43,7 +44,7 @@ public class OrdemServico {
 	private StatusOrdemServico status;
 	
 	@JsonProperty(access = Access.READ_ONLY)
-	private LocalDateTime dataAbertura;
+	private OffsetDateTime dataAbertura;
 	
 	@JsonProperty(access = Access.READ_ONLY) //Ignora a tentativa de gravação de data na request
 	private LocalDateTime dataFinalizacao;
@@ -78,10 +79,10 @@ public class OrdemServico {
 	public void setStatus(StatusOrdemServico status) {
 		this.status = status;
 	}
-	public LocalDateTime getDataAbertura() {
+	public OffsetDateTime getDataAbertura() {
 		return dataAbertura;
 	}
-	public void setDataAbertura(LocalDateTime dataAbertura) {
+	public void setDataAbertura(OffsetDateTime dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
 	public LocalDateTime getDataFinalizacao() {
@@ -107,7 +108,7 @@ public class OrdemServico {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrdemServico other = (OrdemServico) obj;
+		OrdemServicoDomainModel other = (OrdemServicoDomainModel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
